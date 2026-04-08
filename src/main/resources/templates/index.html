@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Asset Tracking</title>
+</head>
+<body>
+
+<h2>Add Asset</h2>
+
+<form action="/save" method="post">
+    Name: <input type="text" name="name" required><br><br>
+    Type: <input type="text" name="type" required><br><br>
+    Status: <input type="text" name="status" required><br><br>
+    <button type="submit">Save</button>
+</form>
+
+<hr>
+
+<h2>Asset List</h2>
+
+<table border="1">
+    <tr>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Type</th>
+        <th>Status</th>
+        <th>Action</th>
+    </tr>
+
+    <tr th:each="a : ${assets}">
+        <td th:text="${a.id}"></td>
+        <td th:text="${a.name}"></td>
+        <td th:text="${a.type}"></td>
+        <td th:text="${a.status}"></td>
+        <td>
+            <a th:href="@{'/delete/' + ${a.id}}">Delete</a>
+        </td>
+    </tr>
+
+</table>
+
+</body>
+</html>
