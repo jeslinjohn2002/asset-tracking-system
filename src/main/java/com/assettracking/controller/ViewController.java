@@ -14,7 +14,6 @@ public class ViewController {
     @Autowired
     private AssetService service;
 
-    // Home page
     @GetMapping("/")
     public String viewHome(Model model) {
         model.addAttribute("assets", service.getAll());
@@ -22,14 +21,12 @@ public class ViewController {
         return "index";
     }
 
-    // Save asset
     @PostMapping("/save")
     public String save(@ModelAttribute Asset asset) {
         service.create(asset);
         return "redirect:/";
     }
 
-    // Delete asset
     @GetMapping("/delete/{id}")
     public String delete(@PathVariable Long id) {
         service.softDelete(id);
