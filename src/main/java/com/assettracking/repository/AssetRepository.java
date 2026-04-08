@@ -8,5 +8,5 @@ import com.assettracking.entity.Asset;
 
 public interface AssetRepository extends JpaRepository<Asset, Long> {
 
-    List<Asset> findByDeletedFalse();  // ✅ FIXED
+    List<Asset> findByDeletedFalse();  
 }
