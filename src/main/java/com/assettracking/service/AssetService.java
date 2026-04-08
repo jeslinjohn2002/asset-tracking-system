@@ -14,24 +14,23 @@ public class AssetService {
     @Autowired
     private AssetRepository repo;
 
-    // ✅ CREATE
+    
     public Asset create(Asset asset) {
         return repo.save(asset);
     }
 
-    // ✅ GET ALL (exclude deleted)
     public List<Asset> getAll() {
-        return repo.findByDeletedFalse();   // ✅ FIXED
+        return repo.findByDeletedFalse();   
     }
 
-    // ✅ GET BY ID
+    
     public Asset getById(Long id) {
         return repo.findById(id)
                 .filter(a -> !a.isDeleted())
                 .orElseThrow(() -> new RuntimeException("Asset not found"));
     }
 
-    // ✅ UPDATE
+   
     public Asset update(Long id, Asset updated) {
         Asset a = getById(id);
 
@@ -42,7 +41,6 @@ public class AssetService {
         return repo.save(a);
     }
 
-    // ✅ SOFT DELETE
     public void softDelete(Long id) {
         Asset a = getById(id);
         a.setDeleted(true);
