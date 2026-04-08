@@ -15,7 +15,6 @@ public class AssetController {
     @Autowired
     private AssetService service;
 
-    // ✅ CREATE
     @PostMapping
     public Asset create(@RequestBody Asset asset) {
         return service.create(asset);
@@ -28,25 +27,21 @@ public class AssetController {
 //    }
     
 
-    // ✅ GET ALL (no casting needed)
     @GetMapping
     public List<Asset> getAll() {
         return service.getAll();
     }
 
-    // ✅ GET BY ID
     @GetMapping("/{id}")
     public Asset getById(@PathVariable Long id) {
         return service.getById(id);
     }
 
-    // ✅ UPDATE (PATCH)
     @PatchMapping("/{id}")
     public Asset update(@PathVariable Long id, @RequestBody Asset asset) {
         return service.update(id, asset);
     }
 
-    // ✅ SOFT DELETE
     @DeleteMapping("/{id}")
     public String delete(@PathVariable Long id) {
         service.softDelete(id);
