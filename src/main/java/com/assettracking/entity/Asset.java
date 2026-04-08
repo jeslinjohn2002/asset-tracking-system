@@ -15,11 +15,9 @@ public class Asset {
 
     private boolean deleted = false;
 
-    // ✅ MUST: Default constructor
     public Asset() {
     }
 
-    // ✅ Getters & Setters
     public Long getId() {
         return id;
     }
